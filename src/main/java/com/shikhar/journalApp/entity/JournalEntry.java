@@ -1,21 +1,25 @@
 package com.shikhar.journalApp.entity;
 
+import org.bson.types.ObjectId;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Document(collection = "myJournalEntryAppliction")
 public class JournalEntry {
 
     @Id
-    private String id;
+    private ObjectId id;
 
     private String title;
     private String content;
-    private Date date;
+    private LocalDateTime date;
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -27,7 +31,7 @@ public class JournalEntry {
         this.content = content;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -35,7 +39,7 @@ public class JournalEntry {
         return title;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
@@ -43,7 +47,7 @@ public class JournalEntry {
         return content;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 

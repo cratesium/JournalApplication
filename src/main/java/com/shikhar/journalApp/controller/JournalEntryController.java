@@ -5,6 +5,9 @@ import com.shikhar.journalApp.services.JournalEnteryServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @RestController
 @RequestMapping("/journal")
 public class JournalEntryController {
@@ -13,9 +16,15 @@ public class JournalEntryController {
     JournalEnteryServices journalEnteryServices;
 
     @PostMapping("/insert")
-    public boolean insertEntry( @RequestBody JournalEntry journalEntry){
+    public JournalEntry insertEntry( @RequestBody JournalEntry journalEntry){
+        journalEntry.setDate(LocalDateTime.now());
         journalEnteryServices.saveEntry(journalEntry);
-        return true;
+        return journalEntry;
+    }
+
+    @GetMapping("/get-all")
+    public List<JournalEntry> getAllEnteries(){
+        return journalEnteryServices.getAll();
     }
 
 
