@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class JournalEnteryServices {
@@ -24,13 +25,15 @@ public class JournalEnteryServices {
      return  journalEnteryRepo.findAll();
 
     }
-//    public  JournalEntry getById(ObjectId objectId){
-//        return null;
-//    }
-//    public  void deleteById(ObjectId objectId){
-//
-//    }
-//    public boolean updateUsingId(ObjectId objectId){
-//        return true;
-//    }
+    public Optional<JournalEntry> getById(ObjectId objectId){
+         return journalEnteryRepo.findById(objectId);
+     }
+     public  void  deleteJournalEntryUsingId(ObjectId id){
+        journalEnteryRepo.deleteById(id);
+     }
+
+
+
+
+
 }
